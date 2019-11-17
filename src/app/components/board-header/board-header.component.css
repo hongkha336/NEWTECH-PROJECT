@@ -1,0 +1,37 @@
+.clean-block.call-to-action.blue.add-on {
+    padding:50px 0;
+    text-align:center;
+    display:-ms-flexbox;
+    display:flex;
+    -ms-flex-align:center;
+    align-items:center;
+    -ms-flex-pack:center;
+    justify-content:center;
+    -ms-flex-direction:column;
+    flex-direction:column;
+
+
+    
+  }
+  
+  .clean-block.call-to-action.blue.add-on {
+    background-color:#007bff;
+    color:#fff;
+    height:20px;
+    padding:20px;
+    margin-bottom:15px;
+    text-align:left !important;
+    justify-content:left;
+    padding-top:20px;
+  }
+
+  .board-name{
+    font-size:22px;
+    height:20px;
+    /*padding:20px;*/
+    margin-bottom:55px;
+    text-align:left !important;
+    justify-content:left;
+    margin-top:-15px;
+  }
+  

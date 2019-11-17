@@ -1,0 +1,21 @@
+<app-board-header></app-board-header>
+<div class="container" style="max-width:inherit;width:auto;height:100%;">
+    <div class="row">
+      <!-- <div class="col-11"></div>
+      <div class="col"><button (click)="saveBoard()">Save</button></div> -->
+      <div class="col custom-col"
+           style="margin:10px;padding:15px;padding-top:15px;padding-bottom:15px;">
+        <h6 class="text-center add-new-list" (click)="addList()">Add new item...</h6>
+      </div>
+    </div>
+
+
+    <div class="row" style="height:inherit;">
+      <app-list *ngFor="let list of lists;let i = index" [list]="list" [listIndex]="i"
+        (moveCardAcrossList)="moveCardAcrossList($event)"
+        (deleteList)="deleteList($event)"
+        attr.listIndex="{{i}}" 
+      ></app-list>
+    </div>
+  </div>
+  
