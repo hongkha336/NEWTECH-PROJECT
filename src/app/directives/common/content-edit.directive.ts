@@ -20,8 +20,6 @@ export class ContentEditDirective implements OnInit {
     this.makeContentEditable();
   }
 
-  // if you press enter then move out of editable mode
-
   @HostListener('keydown.enter', [] )
   exitContentEditable($event) {
     this.el.nativeElement.blur();
