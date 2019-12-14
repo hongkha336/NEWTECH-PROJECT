@@ -3,6 +3,8 @@ import {DOCUMENT} from '@angular/common';
 import {ListInterface, List} from '../../../model/list/list.model';
 import {Card, CardInterface} from '../../../model/card/card.model';
 import { MovementIntf, Movement } from 'src/app/model/card/movement';
+import { CardService } from 'src/app/service/card/card.service';
+import { ListService } from 'src/app/service/list/list.service';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -17,20 +19,27 @@ export class ListComponent implements OnInit {
   @Output() deleteList: EventEmitter<number> = new EventEmitter<number>();
 
   private cardCount = 0;
-
-  constructor(private elementRef: ElementRef , @Inject(DOCUMENT) private document: Document) { }
+  mList : ListInterface;
+  constructor(private elementRef: ElementRef , @Inject(DOCUMENT) private document: Document, private cardService :CardService, private listSerivce: ListService) { }
 
   ngOnInit() {
-
+    this.list.cards = [];
+    this.cardService.getCards(this.list.id).subscribe(
+      rec => this.list.cards = rec
+    );
+    this.mList = this.list;
+    this.mList.cards =[];
   }
 
   addNewCard() {
-    const card = new Card(this.cardCount++ + '', 'header' + this.cardCount, 'summary' + this.cardCount, 'sample desc');
+    
+    const card = new Card( this.list.id,new Date().valueOf() +"" , 'header' , 'summary', '',0,"#fff","");
+    if(this.list.cards == undefined)
+        this.list.cards = [];
     this.list.cards.push(card);
     this.newCardAdded.emit(card);
+    this.cardService.addCard(card).subscribe();
   }
-
-
   allowCardReplacement(dragEvent: DragEvent) {
     dragEvent.dataTransfer.dropEffect = 'move';
     dragEvent.preventDefault();
@@ -38,9 +47,13 @@ export class ListComponent implements OnInit {
 
   delete(){
     this.deleteList.emit(this.listIndex);
-  
+     this.listSerivce.removeList(this.list.id).subscribe();
+    console.log("I deleted list " + this.list.id);
   }
-
+  update(event){
+    this.mList.name = this.list.name;
+     this.listSerivce.updateList(this.mList).subscribe();
+  }
 
   dropCard(dragEvent: DragEvent) {
     const data = JSON.parse(dragEvent.dataTransfer.getData('text'));
@@ -53,16 +66,14 @@ export class ListComponent implements OnInit {
     const listIndexDragged = parseInt(data.listIndex, 10);
     const cardIndexDragged = parseInt(data.cardIndex, 10);
 
-    if (listIndexDragged === listIndexDroppedOn) {
-        // same list just re-organize the cards
-        const cardDragged = this.list.cards.splice(cardIndexDragged,1);
-        this.list.cards.splice(cardIndexDroppedOn , 0 , ...cardDragged);
-    } else {
-      this.moveCardAcrossList.emit(new Movement(listIndexDragged, listIndexDroppedOn , cardIndexDragged , cardIndexDroppedOn));
-    }
+    if (listIndexDragged != listIndexDroppedOn) {
+        this.moveCardAcrossList.emit(new Movement(listIndexDragged, listIndexDroppedOn , cardIndexDragged , cardIndexDroppedOn));
+
+      }
 
   }
 
+  
 
   
 }

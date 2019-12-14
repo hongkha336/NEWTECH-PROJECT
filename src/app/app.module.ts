@@ -10,6 +10,10 @@ import { ContextmenuComponent } from './components/common/contextmenu/contextmen
 import { ContentEditDirective } from './directives/common/content-edit.directive';
 import { SummaryComponent } from './components/card/summary/summary.component';
 import { BoardHeaderComponent } from './components/board-header/board-header.component';
+import { HeaderComponent } from './components/common/header/header.component';
+import { SelectProjectComponent } from './components/common/select-project/select-project.component';
+import { UseFaviconComponent } from './components/common/use-favicon/use-favicon.component';
+import { HttpClientModule} from '@angular/common/http'
 
 
 @NgModule({
@@ -21,11 +25,15 @@ import { BoardHeaderComponent } from './components/board-header/board-header.com
     ContentEditDirective,
     SummaryComponent,
     BoardHeaderComponent,
- 
+    HeaderComponent,
+    SelectProjectComponent,
+    UseFaviconComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

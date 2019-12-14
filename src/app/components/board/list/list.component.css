@@ -1,11 +1,11 @@
 .col {
     background-color: #F5F5F5;
-    margin: 30px;
+    margin: 40px;
     padding: 5px;
     padding-top: 10px;
     padding-bottom: 10px;
     /* border-top: solid 5px blue; */
-    max-width: 270px;
+    max-width: 300px;
     
   }
   
@@ -31,7 +31,7 @@
   
   .list{
     background-color: #e7e9ea;
-  
+
   }
 
   

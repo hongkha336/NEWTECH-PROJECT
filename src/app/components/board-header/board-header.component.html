@@ -1,4 +1,5 @@
-<div class="clean-block call-to-action blue add-on">
-    <h3 class="board-name">{{boardname}}</h3>
+<div class="board-header">
+    <div class="row board-header-title">
+        <h1 [(appContentEdit)]="boardModel.name" (mouseleave)="update($event)" class="board-name">{{boardname}}</h1>
+    </div>
 </div>
-  

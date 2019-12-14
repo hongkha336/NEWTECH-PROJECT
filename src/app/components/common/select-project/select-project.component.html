@@ -1,0 +1,8 @@
+<div class="select-option">
+<select class="browser-default custom-select" (change)="selectOption($event.target.value)">
+        <option selected>Select the board</option>
+      
+        <option   *ngFor="let item of boardNames" value="{{item.id}}">{{item.name}}</option>
+        
+</select>
+</div>

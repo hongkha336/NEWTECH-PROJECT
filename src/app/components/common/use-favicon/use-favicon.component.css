@@ -1,0 +1,26 @@
+.cat_circle {
+float: right;
+  border: 3px solid #7E9CC2;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cat_circle img {
+  width: 45px;
+  object-fit: cover;
+  height: 45px;
+  border-radius: 50%;
+  float: right;
+}
+.user-favi{
+  display: flex;
+}
+.user-favi-name{
+
+  margin-top: 10px;
+  margin-right: 15px;
+}

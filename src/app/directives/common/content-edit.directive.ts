@@ -1,4 +1,5 @@
 import { Directive, HostListener, ElementRef, Renderer, Input, EventEmitter, Output, OnInit, Renderer2 } from '@angular/core';
+import { CardService } from 'src/app/service/card/card.service';
 
 @Directive({
   selector: '[appContentEdit]'
@@ -48,6 +49,7 @@ export class ContentEditDirective implements OnInit {
   exitChange() {
     this.renderer2.setAttribute(this.el.nativeElement, 'contenteditable', 'false');
     this.renderer2.removeClass(this.el.nativeElement, 'inline-edit');
+  //  this.cardServices.updateCard(this)
   }
 
 

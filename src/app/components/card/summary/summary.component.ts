@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { Card } from 'src/app/model/card/card.model';
+import { CardService } from 'src/app/service/card/card.service';
 
 @Component({
   selector: 'app-card-summary',
@@ -11,12 +12,21 @@ export class SummaryComponent implements OnInit {
   @Input() card: Card;
   @Input() listIndex: number;
   @Input() cardIndex: number;
-
-
-  constructor() { }
+  @Input() color : string = '#fff';
+  get_random_color() {
+    return "rgb(" + 255 + "," +251 + "," + 222 + ")";
+}
+  constructor(private servive : CardService) { 
+    this.color = this.get_random_color();
+  }
 
   ngOnInit() {
-    
+   this.card.colID = this.listIndex+1;
+   this.servive.updateCard(this.card).subscribe();
+  }
+
+  update(event){
+    this.servive.updateCard(this.card).subscribe();
   }
 
   identifyCardBeingDragged(dragEvent: DragEvent) {

@@ -15,13 +15,10 @@ export class List implements ListInterface {
   id: string;
   name: string;
   position: number;
-
-
   constructor() {
+    this.cards = [];
   }
-
-
-
+  
   addCard(card: CardInterface) {
     if (this.isCardEmpty()) {
       this.cards = [];

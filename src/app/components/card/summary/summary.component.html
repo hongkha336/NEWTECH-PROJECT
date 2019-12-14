@@ -1,5 +1,5 @@
-<div class="card" [draggable]="'true'" (dragstart)="identifyCardBeingDragged($event)"  id="list-{{listIndex}}-card-{{cardIndex}}" attr.listIndex="{{listIndex}}" attr.cardIndex="{{cardIndex}}" (dragover)="allowCardDragToBeDropped($event)" >
-    <div class="card-body">
+<div class="card" [draggable]="'true'" (dragstart)="identifyCardBeingDragged($event)"   id="list-{{listIndex}}-card-{{cardIndex}}" attr.listIndex="{{listIndex}}" attr.cardIndex="{{cardIndex}}" (mouseleave)="update($event)" (dragover)="allowCardDragToBeDropped($event)"  >
+    <div class="card-body"  [style.background]="color">
       <h4 class="card-title" [(appContentEdit)]="card.header" [draggable]="'false'" >  </h4>
       <h6 class="text-muted card-subtitle mb-2" [(appContentEdit)]="card.summary" [draggable]="'false'" ></h6>
     </div>

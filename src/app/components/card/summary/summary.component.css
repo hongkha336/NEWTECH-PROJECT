@@ -21,7 +21,7 @@
     overflow-y: hidden;
     text-overflow: ellipsis;
     font-size: 10px;
-    width: 200px;
+    width: 100%;
   }
   .text-muted {
     font-size: 10px;
